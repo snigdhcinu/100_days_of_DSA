@@ -1,3 +1,6 @@
+// Problem Statement :- https://cses.fi/problemset/task/1069/
+
+
 #include<iostream>
 #include<ctime>
 #include<cstdlib>
@@ -103,7 +106,7 @@ int main(){
 	cout << "longest occurence of gaunine is : - " << substring_G << endl ; 
 	cout << "longest occurence of thyamine is : - " << substring_T << endl ; 
 	cout << "longest occurence of cytosine is : - " << substring_C << endl ; 	
-	
+
 	cout << "The longest repetition is : - " ;
 	
 	int array [] = {substring_A,substring_T,substring_G,substring_C};
