@@ -10,13 +10,15 @@
 
 using namespace std;
 
-int settleArray(int* arr , int size){
+unsigned long int settleArray(unsigned long int* arr , int size){
 	int i = 1 ;
-	int incrementation = 0;
+	unsigned long int incrementation = 0;
+	unsigned long int diff = 0;
 	while(i < size){
 		if(arr[i] < arr[i - 1]){
-			incrementation += (arr[i - 1] - arr[i]) ;
-			arr[i] += (arr[i - 1] - arr[i]) ;
+			diff = arr[i - 1] - arr[i];
+			incrementation += diff ;
+			arr[i] += diff ;
 		}
 		i += 1 ;
 	}
@@ -28,14 +30,15 @@ int main(){
 	cout << "Enter the size of the array :- " ;
 	cin >> size ; 
 	
-	int input[size] ;
+	unsigned long int input[size] ;
 	cout << "Enter the elements of the array" << endl ;
 	for(int i = 0 ; i < size ; i++){
 		cin >> input[i] ;
 	}
 	
-	int modifications = settleArray(input , size) ;
+	unsigned long int modifications = settleArray(input , size) ;
 	cout << "Total " << modifications << " changes have been made to satisfy the array." ;  
+//	cout << modifications ;		// comment all cout and uncomment this cout for passing all test cases.
 	return 0 ; 
 }
 
