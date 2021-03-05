@@ -16,34 +16,22 @@ void generateArray(int* arr , int n){
 
 void printArray(int arr[] , int size){
 	for(int i = 0 ; i < size ; i++){
-//		cout << " | " << arr[i] ; 
-		cout << arr[i] << " " ;
-//		if(i == size - 1)
-//			cout << " | " ; 
+		cout << arr[i] << " " ; 
 	}
 	cout << endl ;
 }
 
-// requires modification
-void createArray(int* result , int arr[] , int size){
-	int start , median , end ; 
-	start = 0 ; 
-	end = size - 1 ; 
-	median = size / 2 ; 
+// odd-even algorithm
+void createArray(int* result , int arr[] , int size){ 
 	
-	for ( int curr = 0 ; curr < size ; curr++ ){
-		if( curr == 1) {
-			result[curr] = arr[median] ;
-			continue ; 
-		}else if( (curr % 2 == 0) && (curr != 2) ){
-			result[curr] = arr[start] ;
-			start += 1 ;
-			continue ;
-		}else if( ((curr % 2 != 0) && (curr != 1)) || (curr == 2) ){
-			result[curr] = arr[end] ;
-			end -= 1 ;
-			continue ; 
-		}
+	int curr = 0 ; 
+	for ( int i = 1 ; i < size ; i += 2 ){
+		result[curr] = arr[i] ;
+		curr += 1 ; 
+	} 
+	for( int i = 0 ; i < size ; i += 2 ){
+		result[curr] = arr[i] ;
+		curr += 1 ;
 	}
 }
 
@@ -64,24 +52,29 @@ bool checkBeauty(int result[] , int n){
 
 int main() {
 	int n ;
-//	cout << "Enter the value of n :- " ;
+	cout << "Enter the value of n :- " ;
 	cin >> n ;
+	
+	if(n == 1){
+		cout << '1' ;
+		return 0 ;
+	}
 	
 	int array[n] ;
 	generateArray(array , n) ;
-//	printArray(array , n) ; 
+	cout << "The generated array is :- " << endl ;
+	printArray(array , n) ; 
 	
 	int result[n] ; 
 	createArray(result , array , n) ;
-//	printArray(result , n) ;
+	
 	bool output = checkBeauty(result , n) ; 
-//	cout << output ;
+	cout << "After beautification, the result obtained is : - " << endl ;
 	
 	if(output){
 		printArray(result , n);
 	}else{
 		cout << "NO SOLUTION" ;
 	}
-//	return result ; 
-return 0 ;
+	return 0 ; 
 }
